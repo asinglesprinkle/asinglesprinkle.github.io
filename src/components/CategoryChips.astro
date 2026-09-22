@@ -1,0 +1,46 @@
+---
+import { getCategory } from '../categories';
+
+interface Props {
+	categories: readonly string[];
+}
+
+const { categories } = Astro.props;
+const resolved = categories.map((slug) => getCategory(slug)).filter((c) => c !== undefined);
+---
+
+{
+	resolved.length > 0 && (
+		<ul class="chips">
+			{resolved.map((category) => (
+				<li>
+					<a href={`/categories/${category.slug}/`}>{category.name}</a>
+				</li>
+			))}
+		</ul>
+	)
+}
+
+<style>
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.chips a {
+		display: inline-block;
+		padding: 0.15em 0.6em;
+		border-radius: 999px;
+		background: rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+		font-size: 0.8rem;
+		text-decoration: none;
+	}
+	.chips a:hover {
+		background: var(--accent);
+		color: white;
+	}
+</style>

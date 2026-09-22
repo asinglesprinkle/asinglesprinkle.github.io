@@ -2,6 +2,7 @@
 title: 'Post template'
 description: 'Copy this file to start a new post. It never publishes while draft is true.'
 pubDate: 'Sep 22 2026'
+categories: ['system-design']
 draft: true
 ---
 
@@ -11,9 +12,18 @@ Copy this file, rename it, and write. The filename becomes the URL, so
 ## Frontmatter
 
 `title`, `description`, and `pubDate` are required. `description` shows up in the
-post list, in the RSS feed, and in link previews, so write it for a stranger.
+post list, on category pages, in the RSS feed, and in link previews, so write it
+for a stranger.
 
-Two fields are optional:
+`categories` takes slugs from `src/categories.ts`. A post can be in more than
+one, and a slug that isn't in that file fails the build rather than silently
+creating a new category:
+
+```yaml
+categories: ['system-design', 'career']
+```
+
+Two more fields are optional:
 
 - `updatedDate` adds a "last updated" line to the post.
 - `draft: true` keeps the post out of the built site. Drafts still render at
@@ -39,4 +49,4 @@ Put an image in `src/assets/`, then reference it relative to this file:
 ```
 
 To give the post a banner, add `heroImage: '../../assets/banner.jpg'` to the
-frontmatter.
+frontmatter. The banner doubles as the link-preview image.

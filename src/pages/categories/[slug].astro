@@ -1,20 +1,45 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
+import CategoryChips from '../../components/CategoryChips.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import CategoryChips from '../../components/CategoryChips.astro';
 import Header from '../../components/Header.astro';
+import { CATEGORIES } from '../../categories';
 import { SITE_TITLE } from '../../consts';
-import { getPublishedPosts } from '../../lib/posts';
+import { getPostsInCategory } from '../../lib/posts';
 
-const posts = await getPublishedPosts();
+export async function getStaticPaths() {
+	return CATEGORIES.map((category) => ({
+		params: { slug: category.slug },
+		props: category,
+	}));
+}
+
+const category = Astro.props;
+const posts = await getPostsInCategory(category.slug);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Blog | ${SITE_TITLE}`} description="Everything I've written, newest first." />
+		<BaseHead title={`${category.name} | ${SITE_TITLE}`} description={category.description} />
 		<style>
+			.heading {
+				margin-bottom: 2.5rem;
+			}
+			.heading h1 {
+				margin-bottom: 0.2em;
+			}
+			.heading p {
+				margin: 0;
+				color: rgb(var(--gray-dark));
+			}
+			.back {
+				display: inline-block;
+				margin-bottom: 1.5rem;
+				color: rgb(var(--gray));
+				font-size: 0.9rem;
+			}
 			ul {
 				margin: 0;
 				padding: 0;
@@ -25,7 +50,7 @@ const posts = await getPublishedPosts();
 			}
 			.title {
 				margin: 0 0 0.2em 0;
-				font-size: 1.4rem;
+				font-size: 1.3rem;
 				line-height: 1.2;
 			}
 			.title a {
@@ -36,7 +61,7 @@ const posts = await getPublishedPosts();
 				color: var(--accent);
 			}
 			.date {
-				margin: 0 0 0.4em 0;
+				margin: 0 0 0.3em 0;
 				color: rgb(var(--gray));
 				font-size: 0.9rem;
 			}
@@ -62,8 +87,13 @@ const posts = await getPublishedPosts();
 	<body>
 		<Header />
 		<main>
-			<h1>Blog</h1>
-			{posts.length === 0 && <p class="empty">Nothing published yet.</p>}
+			<a class="back" href="/">&larr; All topics</a>
+			<div class="heading">
+				<h1>{category.name}</h1>
+				<p>{category.description}</p>
+			</div>
+
+			{posts.length === 0 && <p class="empty">Nothing here yet.</p>}
 			<ul>
 				{
 					posts.map((post) => (

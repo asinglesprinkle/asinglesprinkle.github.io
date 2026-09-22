@@ -1,12 +1,11 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { getPublishedPosts } from '../lib/posts';
+import { getCategoriesWithCounts } from '../lib/posts';
 
-const posts = (await getPublishedPosts()).slice(0, 5);
+const categories = await getCategoriesWithCounts();
 ---
 
 <!doctype html>
@@ -17,40 +16,59 @@ const posts = (await getPublishedPosts()).slice(0, 5);
 			.intro {
 				margin-bottom: 3rem;
 			}
+			.intro h1 {
+				margin-bottom: 0.3em;
+			}
+			.intro p {
+				margin: 0;
+				color: rgb(var(--gray-dark));
+			}
 			ul {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.5rem;
 				margin: 0;
 				padding: 0;
 				list-style: none;
 			}
-			li + li {
-				margin-top: 1.5rem;
-			}
-			.title {
-				margin: 0 0 0.2em 0;
-				font-size: 1.2rem;
-				line-height: 1.2;
-			}
-			.title a {
+			li a {
+				display: flex;
+				height: 100%;
+				flex-direction: column;
+				padding: 1.5rem;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 12px;
 				color: rgb(var(--black));
 				text-decoration: none;
+				transition: 0.2s ease;
 			}
-			.title a:hover {
+			li a:hover {
+				border-color: var(--accent);
+				box-shadow: var(--box-shadow);
+			}
+			.name {
+				margin: 0 0 0.4em 0;
+				font-size: 1.3rem;
+				line-height: 1.2;
+			}
+			li a:hover .name {
 				color: var(--accent);
 			}
-			.date {
-				margin: 0 0 0.3em 0;
-				color: rgb(var(--gray));
-				font-size: 0.9rem;
-			}
 			.description {
-				margin: 0;
+				margin: 0 0 1em 0;
 				color: rgb(var(--gray-dark));
+				font-size: 0.95rem;
 			}
-			.more {
-				margin-top: 2rem;
-			}
-			.empty {
+			.count {
+				margin: auto 0 0 0;
 				color: rgb(var(--gray));
+				font-size: 0.85rem;
+			}
+			@media (max-width: 720px) {
+				ul {
+					grid-template-columns: 1fr;
+					gap: 1rem;
+				}
 			}
 		</style>
 	</head>
@@ -59,32 +77,24 @@ const posts = (await getPublishedPosts()).slice(0, 5);
 		<main>
 			<section class="intro">
 				<h1>Hey, I'm Cole.</h1>
-				<p>
-					I build things and write about what I learn doing it. Mostly systems, tooling, and
-					whatever I'm currently stuck on.
-				</p>
+				<p>I build things and write about what I learn doing it. Pick a topic.</p>
 			</section>
 
-			<section>
-				<h2>Recent posts</h2>
-				{posts.length === 0 && <p class="empty">Nothing published yet.</p>}
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<p class="date">
-									<FormattedDate date={post.data.pubDate} />
+			<ul>
+				{
+					categories.map((category) => (
+						<li>
+							<a href={`/categories/${category.slug}/`}>
+								<h2 class="name">{category.name}</h2>
+								<p class="description">{category.description}</p>
+								<p class="count">
+									{category.count} {category.count === 1 ? 'post' : 'posts'}
 								</p>
-								<h3 class="title">
-									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-								</h3>
-								<p class="description">{post.data.description}</p>
-							</li>
-						))
-					}
-				</ul>
-				<p class="more"><a href="/blog">All posts &rarr;</a></p>
-			</section>
+							</a>
+						</li>
+					))
+				}
+			</ul>
 		</main>
 		<Footer />
 	</body>

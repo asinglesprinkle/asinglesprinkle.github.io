@@ -2,18 +2,19 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import CategoryChips from '../components/CategoryChips.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, draft, categories = [] } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={heroImage} />
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -52,6 +53,19 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.title :global(.chips) {
+				justify-content: center;
+				margin-bottom: 1.5em;
+			}
+			.draft-notice {
+				max-width: 720px;
+				margin: 0 auto 1em auto;
+				padding: 0.6em 1em;
+				border-left: 4px solid var(--accent);
+				background: rgb(var(--gray-light));
+				color: rgb(var(--gray-dark));
+				font-size: 0.9rem;
+			}
 		</style>
 	</head>
 
@@ -75,8 +89,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							}
 						</div>
 						<h1>{title}</h1>
+						<CategoryChips categories={categories} />
 						<hr />
 					</div>
+					{
+						draft && (
+							<p class="draft-notice">
+								This is a draft. It renders in the dev server but is left out of the built site.
+							</p>
+						)
+					}
 					<slot />
 				</div>
 			</article>
