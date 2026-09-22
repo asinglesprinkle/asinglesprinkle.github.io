@@ -1,0 +1,91 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = (await getPublishedPosts()).slice(0, 5);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.intro {
+				margin-bottom: 3rem;
+			}
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			li + li {
+				margin-top: 1.5rem;
+			}
+			.title {
+				margin: 0 0 0.2em 0;
+				font-size: 1.2rem;
+				line-height: 1.2;
+			}
+			.title a {
+				color: rgb(var(--black));
+				text-decoration: none;
+			}
+			.title a:hover {
+				color: var(--accent);
+			}
+			.date {
+				margin: 0 0 0.3em 0;
+				color: rgb(var(--gray));
+				font-size: 0.9rem;
+			}
+			.description {
+				margin: 0;
+				color: rgb(var(--gray-dark));
+			}
+			.more {
+				margin-top: 2rem;
+			}
+			.empty {
+				color: rgb(var(--gray));
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="intro">
+				<h1>Hey, I'm Cole.</h1>
+				<p>
+					I build things and write about what I learn doing it. Mostly systems, tooling, and
+					whatever I'm currently stuck on.
+				</p>
+			</section>
+
+			<section>
+				<h2>Recent posts</h2>
+				{posts.length === 0 && <p class="empty">Nothing published yet.</p>}
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+								<h3 class="title">
+									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								</h3>
+								<p class="description">{post.data.description}</p>
+							</li>
+						))
+					}
+				</ul>
+				<p class="more"><a href="/blog">All posts &rarr;</a></p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
