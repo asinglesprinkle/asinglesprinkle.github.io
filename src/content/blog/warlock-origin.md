@@ -25,7 +25,7 @@ It was created using ideas from the top down and hit back into place where it we
 Traditional coding is you go bottom up, you write code to create the higher level ideas.
 
 This AI generated code almost reminded me of how compilers and higher level languages work.
-Like you could go in and read the assembly or binaries but besides being a nerd... why would you?
+Like you could go in and read the assembly or binaries but... why would you?
 Educational purposes? Fun? All valid but it's not "the way".
 
 What if this is the new higher level language?
