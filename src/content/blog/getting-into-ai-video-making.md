@@ -17,7 +17,7 @@ I want to introduce you to the pain points I've found:
 2. Rooms are never consistent, they change with every camera shift
 3. Number of fingers
 4. Non-sense logic, models will always make someone have a cigarette in both hands for instance
-5. Certain materials are a no-go, thin materials like wire, furry seems to be handled badly
+5. Certain materials are a no-go, thin materials like wire, fur seems to be handled badly so no fun creatures
 6. Cuts and camera angles in a single setting are incredibly difficult
 
 The solutions to these common issues:
