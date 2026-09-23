@@ -38,12 +38,12 @@ Types of AI videos:
 - **Video to Video:** There are various ways to do this but sometimes there are real humans basically in front of a green screen actually acting and later the model turns this video into the desired look using variations of the methods above.
 
 Given my technical limitations and personal style I sit between low and high preproduction.
-Given what I create I just have to need yet to do more.
+Given what I create I just have no need yet to do more.
 I create images in Midjourney with a personalized setting so all prompts will be unique to my preferences.
-I take those images and combine them whether it be people with object to say make someone have a backpack or put a person in a scene or map out the entire world furniture style it's all included at this range and above.
+I take those images and combine them whether it be people with object to say make someone have a backpack or put a person in a scene or map out the entire worlds furniture style it's all included at this range and above.
 
 I experimented with Google Flow because they boast consistent character software however it's not native to the model it's part of the Flow product which behind the scenes seems to influence prompt weights.
-The product is also just bad at this period in time, sometimes video download will fail, you can only create content by chatting with Gemini and it will almost every time never send off your request, sometimes the videos can't be downloaded, there are regional forced watermarks.
+The product is also just bad at this period in time, sometimes video download will fail, you can only create content by chatting with Gemini and it will almost every time fail to send off your request, sometimes the videos can't be downloaded, there are regional forced watermarks.
 After this flop I switched over to another program.
 
 I currently use Hailuo Minimax H3 for Image to Video and it's been worlds better, there is even free Nano Banana Pro image generation for me at the moment which helps place consistent characters within a scene.
