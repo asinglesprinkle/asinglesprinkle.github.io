@@ -1,6 +1,6 @@
 ---
 title: 'Warlock origin'
-description: 'The AI first editor'
+description: 'The AI first editor.'
 pubDate: 'Sep 22 2026'
 categories: ['warlock']
 draft: false
