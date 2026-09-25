@@ -6,7 +6,7 @@ categories: ['warlock']
 draft: false
 ---
 
-I was hesitant with AI at first. I felt like it was cheating or couldn't possibly be good enough, to trust running autonomously, and a few years ago that was probably true.
+I was hesitant with AI at first. I felt like it was cheating or couldn't possibly be good enough to trust running autonomously and a few years ago that was probably true.
 
 I hesitantly got a Claude subscription back in March of 2026.
 I would do what most people do, prompt engineering.
