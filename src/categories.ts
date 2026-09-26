@@ -6,6 +6,11 @@
  * post can't quietly create a fifth category.
  */
 export const CATEGORIES = [
+    {
+        slug: 'ai-general',
+        name: 'AI General',
+        description: 'Thoughts on AI as a whole.'
+    },
 	{
 		slug: 'ai-videos',
 		name: 'AI Videos',
