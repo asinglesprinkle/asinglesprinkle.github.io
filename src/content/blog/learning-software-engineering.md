@@ -33,4 +33,7 @@ My life has been very crazy and sometimes others' lives can feel very linear.
 High School -> College -> First Job for 10 years, for example.
 It's not bad, just different, and having such a vastly different experience means I have to adjust often to the average.
 Sometimes things that seem so big to most people don't faze me so much, so I need to remind myself - they're feeling this more.
+For example, I see talented people who want to do more but play it safe, agonizing over the perfect next move.
+From the outside they seem to have so much more security than I ever had, and part of me wishes they'd just go for it.
+Then I remind myself that the risk feels bigger to them than it would to me.
 
