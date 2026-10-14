@@ -24,7 +24,7 @@ This process is a bit like having an MMORPG on dialup, it can be done (and has) 
 I tested pacting on Nushell about 1500 Rust files.
 The total time to pact would have been roughly 4 hours and anytime a file changes that directory should be repacted.
 There is room to optimize, parallel file processing in a directory, refining model and mechanical aspects.
-However even with all this optimization I reach a point where pacting costs too much in one either time or model usage to justify.
+However even with all this optimization I reach a point where pacting costs too much in either time or model usage to justify.
 
 The paradox part comes from the artifact is useful and AI could soon reach the point to generate them much more effectively however once AI is at that point the artifact may become worthless.
 
