@@ -3,7 +3,7 @@ title: 'Arbiter'
 description: "Thoughts after Warlock's release."
 pubDate: 'Oct 28 2026'
 categories: ['warlock']
-draft: true
+draft: false
 ---
 
 After Warlock's release I had the tools I needed to create software via AI, document the process, and have control.
